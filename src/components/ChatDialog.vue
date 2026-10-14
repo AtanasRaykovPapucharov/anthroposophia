@@ -25,7 +25,9 @@ const timeFmt = computed(
 // practice replies are stored as intents and translated when shown
 function textOf(m) {
   if (m.text) return m.text
-  return t(`doctor.chat.replies.${m.intent}`, {
+  // without set consultation hours, answer with how times are arranged instead
+  const intent = m.intent === 'hours' && !doctor.value.hours ? 'hoursAsk' : m.intent
+  return t(`doctor.chat.replies.${intent}`, {
     name: doctor.value.name,
     hours: doctor.value.hours,
   })

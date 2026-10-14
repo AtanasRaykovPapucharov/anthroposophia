@@ -69,10 +69,16 @@ const themeLabel = computed(() =>
   <q-layout view="lHh Lpr lFf">
     <q-header class="app-header">
       <q-toolbar class="app-toolbar">
-        <router-link to="/" class="brand" :aria-label="t('nav.home')">
+        <div
+          v-if="!drawerOpen"
+          clickable
+          class="brand"
+          :aria-label="t('nav.home')"
+          @click="drawerOpen = true"
+        >
           <img :src="logo" alt="" class="brand-logo" width="38" height="38" />
           <span class="brand-name">{{ t('appName') }}</span>
-        </router-link>
+        </div>
 
         <q-space />
 
@@ -129,17 +135,6 @@ const themeLabel = computed(() =>
             </q-list>
           </q-menu>
         </q-btn>
-
-        <q-btn
-          v-if="!isMobile"
-          flat
-          round
-          dense
-          class="tool-btn"
-          icon="sym_r_menu"
-          :aria-label="t('nav.openMenu')"
-          @click="drawerOpen = !drawerOpen"
-        />
       </q-toolbar>
     </q-header>
 
@@ -149,13 +144,21 @@ const themeLabel = computed(() =>
           <img :src="logo" alt="" width="52" height="52" />
           <div>
             <div class="drawer-title">{{ t('appName') }}</div>
-            <div class="drawer-sub">{{ t('tagline') }}</div>
           </div>
+          <q-btn
+            flat
+            round
+            dense
+            class="tool-btn tool-btn-close"
+            icon="close"
+            :aria-label="t('nav.openMenu')"
+            @click="drawerOpen = false"
+          />
         </div>
 
         <nav :aria-label="t('nav.menu')">
           <template v-for="(group, gi) in navGroups" :key="group.id">
-            <div class="drawer-group">{{ t(`nav.groups.${group.id}`) }}</div>
+            <!-- <div class="drawer-group">{{ t(`nav.groups.${group.id}`) }}</div> -->
             <q-list>
               <q-item
                 v-for="item in group.items"
@@ -178,7 +181,7 @@ const themeLabel = computed(() =>
           </template>
         </nav>
 
-        <p class="drawer-note">{{ t('common.drawerNote') }}</p>
+        <!-- <p class="drawer-note">{{ t('common.drawerNote') }}</p> -->
       </div>
     </q-drawer>
 
@@ -258,6 +261,12 @@ const themeLabel = computed(() =>
 
 .tool-btn {
   color: var(--app-text);
+}
+
+.tool-btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .lang-btn :deep(.q-btn__content) {

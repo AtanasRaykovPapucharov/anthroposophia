@@ -836,6 +836,17 @@ export default {
     location: 'Practice',
     hours: 'Consultation hours',
     languages: 'Languages',
+    emailLabel: 'E-mail',
+    telegram: 'Telegram',
+    website: 'Website',
+    qualifications: 'Main qualifications',
+    method: {
+      title: 'Method of work',
+      suitable: 'Works best with',
+      notSuitable: 'Not suitable for',
+      firstVisit: 'The first consultation',
+      source: "Based on the doctor's website aetheomed.net.",
+    },
     howTitle: 'How booking works',
     howSteps: [
       'Fill in the short form and choose how to send it: e-mail, WhatsApp, Viber or SMS.',
@@ -858,10 +869,12 @@ export default {
       where: 'Where',
       join: 'Request a place',
       joinWaitlist: 'Join the waiting list',
+      inquiryJoin: 'Ask about the next dates',
       status: {
         open: 'Places available',
         waitlist: 'Waiting list',
         full: 'Full',
+        inquiry: 'Dates on request',
       },
     },
     form: {
@@ -899,11 +912,13 @@ export default {
       via: {
         email: 'E-mail',
         whatsapp: 'WhatsApp',
+        telegram: 'Telegram',
         viber: 'Viber',
         sms: 'SMS',
         copy: 'Copy the text',
       },
       copied: 'Request copied. Paste it into a message to the practice.',
+      telegramCopied: 'The text is copied. Paste it into the Telegram chat that opens.',
       sentNote:
         'Your app opens with the message ready. Press send there, and the practice will contact you to confirm.',
       noChannels:
@@ -949,6 +964,8 @@ export default {
         price:
           'Prices depend on the type and length of the consultation. We will tell you when we confirm your appointment.',
         hours: 'Consultation hours: {hours}.',
+        hoursAsk:
+          'Appointments are arranged individually. Send a request with the form on this page and the practice will suggest a time.',
         urgent:
           'If this is an emergency, please call your local emergency number now, 112 in Bulgaria and the EU. This chat is not for urgent help.',
         thanks: 'You are welcome. Take care!',

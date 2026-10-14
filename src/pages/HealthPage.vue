@@ -8,7 +8,7 @@ import { THERAPIES, EMERGENCY } from '@/data/health'
 import { LINKS } from '@/data/library'
 import { useContent } from '@/composables/useContent'
 
-const { t, list } = useContent()
+const { t, list, pick } = useContent()
 const $q = useQuasar()
 
 const visitSteps = computed(() => list('health.visit.steps'))
@@ -149,7 +149,7 @@ const findLinks = LINKS.filter((l) => ['medsection', 'ivaa'].includes(l.id))
             outline
             no-caps
             :icon="l.icon"
-            :label="l.name"
+            :label="pick(l.name)"
             :href="l.url"
             target="_blank"
             rel="noopener noreferrer"

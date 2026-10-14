@@ -830,6 +830,17 @@ export default {
     location: '診療所',
     hours: '診療時間',
     languages: '対応言語',
+    emailLabel: 'メール',
+    telegram: 'Telegram',
+    website: 'ウェブサイト',
+    qualifications: '主な専門医資格',
+    method: {
+      title: '診療の方法',
+      suitable: '適している方',
+      notSuitable: '適さない場合',
+      firstVisit: '初回の診察',
+      source: '医師のウェブサイト aetheomed.net の情報にもとづいています。',
+    },
     howTitle: '予約の流れ',
     howSteps: [
       '短いフォームに記入し、送信方法を選びます：メール、WhatsApp、Viber、SMS。',
@@ -853,10 +864,12 @@ export default {
       where: '場所',
       join: '参加を申し込む',
       joinWaitlist: 'キャンセル待ちに登録',
+      inquiryJoin: '次回の日程を問い合わせる',
       status: {
         open: '募集中',
         waitlist: 'キャンセル待ち',
         full: '満員',
+        inquiry: '日程はお問い合わせください',
       },
     },
     form: {
@@ -892,11 +905,13 @@ export default {
       via: {
         email: 'メール',
         whatsapp: 'WhatsApp',
+        telegram: 'Telegram',
         viber: 'Viber',
         sms: 'SMS',
         copy: 'テキストをコピー',
       },
       copied: '申し込みをコピーしました。診療所へのメッセージに貼り付けてください。',
+      telegramCopied: 'テキストをコピーしました。開いたTelegramのチャットに貼り付けてください。',
       sentNote:
         'メッセージが入力された状態でアプリが開きます。そこで送信を押すと、確認のため診療所から連絡があります。',
       noChannels:
@@ -941,6 +956,8 @@ export default {
           '治療グループは、現在の募集状況とともにこのページに掲載しています。ご希望のグループの「参加を申し込む」を押してください。',
         price: '費用は診察の種類と時間によって異なります。予約確定の際にお知らせします。',
         hours: '診療時間：{hours}。',
+        hoursAsk:
+          '診察の日時は個別に調整しています。このページのフォームから申し込んでいただければ、診療所から日時をご提案します。',
         urgent:
           '緊急の場合は、すぐに緊急通報番号（日本では119、EUでは112）に電話してください。このチャットは緊急の対応には使えません。',
         thanks: 'どういたしまして。どうぞお大事に。',

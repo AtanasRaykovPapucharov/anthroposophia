@@ -7,7 +7,7 @@ import 'leaflet/dist/leaflet.css'
 import { CENTERS, CATEGORIES } from '@/data/centers'
 import { useContent } from '@/composables/useContent'
 
-const { t, locale } = useContent()
+const { t, locale, pick } = useContent()
 const $q = useQuasar()
 const route = useRoute()
 const router = useRouter()
@@ -54,7 +54,13 @@ const visible = computed(() => {
   let rows = CENTERS.filter((c) => {
     if (activeCats.value.size && !activeCats.value.has(c.cat)) return false
     if (!q) return true
-    const hay = [c.name, c.place, countryName(c.cc), t(`map.centers.${c.id}`)]
+    const hay = [
+      pick(c.name),
+      pick(c.place),
+      c.place['en-US'],
+      countryName(c.cc),
+      t(`map.centers.${c.id}`),
+    ]
       .join(' ')
       .toLowerCase()
     return hay.includes(q)
@@ -101,8 +107,8 @@ function popupHtml(c) {
   return `
     <div class="pop">
       <div class="pop-cat" style="--cat:${cat.color}">${escapeHtml(t(`map.categories.${c.cat}`))}</div>
-      <div class="pop-name">${escapeHtml(c.name)}</div>
-      <div class="pop-place">${escapeHtml(c.place)}, ${escapeHtml(countryName(c.cc))} ${since}</div>
+      <div class="pop-name">${escapeHtml(pick(c.name))}</div>
+      <div class="pop-place">${escapeHtml(pick(c.place))}, ${escapeHtml(countryName(c.cc))} ${since}</div>
       <p class="pop-desc">${escapeHtml(t(`map.centers.${c.id}`))}</p>
       ${city}
       <div class="pop-actions">${site}${dir}</div>
@@ -127,8 +133,8 @@ function renderMarkers() {
   for (const c of visible.value) {
     const m = L.marker([c.lat, c.lng], {
       icon: makeIcon(c, c.id === selectedId.value),
-      title: c.name,
-      alt: c.name,
+      title: pick(c.name),
+      alt: pick(c.name),
       keyboard: true,
     })
     m.bindPopup(() => popupHtml(c), { maxWidth: 280, autoPanPadding: [24, 80] })
@@ -312,8 +318,8 @@ watch(locale, () => renderMarkers())
               >
                 <span class="result-dot" :style="{ background: catById[c.cat].color }" />
                 <span class="result-main">
-                  <span class="result-name">{{ c.name }}</span>
-                  <span class="result-place">{{ c.place }}, {{ countryName(c.cc) }}</span>
+                  <span class="result-name">{{ pick(c.name) }}</span>
+                  <span class="result-place">{{ pick(c.place) }}, {{ countryName(c.cc) }}</span>
                   <span class="result-desc">{{ t(`map.centers.${c.id}`) }}</span>
                 </span>
                 <span v-if="c.km !== null" class="result-km">

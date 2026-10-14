@@ -24,6 +24,19 @@ export function useDoctor() {
     languages: loc(DOCTOR.languages),
     address: loc(DOCTOR.address),
     hours: loc(DOCTOR.hours),
+    qualifications: (DOCTOR.qualifications || []).map((q) => ({ ...q, title: loc(q.title) })),
+    method: DOCTOR.method
+      ? {
+          approach: loc(DOCTOR.method.approach) || [],
+          suitable: loc(DOCTOR.method.suitable) || [],
+          notSuitable: loc(DOCTOR.method.notSuitable) || [],
+          firstVisit: loc(DOCTOR.method.firstVisit) || [],
+          firstVisitNote: loc(DOCTOR.method.firstVisitNote),
+        }
+      : null,
+    requestKinds: DOCTOR.requestKinds?.length
+      ? DOCTOR.requestKinds
+      : ['first', 'followup', 'online', 'group'],
     groups: DOCTOR.groups.map((g) => ({
       ...g,
       title: loc(g.title),

@@ -843,6 +843,17 @@ export default {
     location: 'Praxis',
     hours: 'Sprechzeiten',
     languages: 'Sprachen',
+    emailLabel: 'E-Mail',
+    telegram: 'Telegram',
+    website: 'Website',
+    qualifications: 'Facharzttitel',
+    method: {
+      title: 'Arbeitsweise',
+      suitable: 'Geeignet bei',
+      notSuitable: 'Nicht geeignet bei',
+      firstVisit: 'Das Erstgespräch',
+      source: 'Nach Angaben der Website der Ärztin, aetheomed.net.',
+    },
     howTitle: 'So funktioniert die Anfrage',
     howSteps: [
       'Füllen Sie das kurze Formular aus und wählen Sie, wie Sie es senden: E-Mail, WhatsApp, Viber oder SMS.',
@@ -866,10 +877,12 @@ export default {
       where: 'Wo',
       join: 'Platz anfragen',
       joinWaitlist: 'Auf die Warteliste',
+      inquiryJoin: 'Nach den nächsten Terminen fragen',
       status: {
         open: 'Plätze frei',
         waitlist: 'Warteliste',
         full: 'Ausgebucht',
+        inquiry: 'Termine auf Anfrage',
       },
     },
     form: {
@@ -907,11 +920,14 @@ export default {
       via: {
         email: 'E-Mail',
         whatsapp: 'WhatsApp',
+        telegram: 'Telegram',
         viber: 'Viber',
         sms: 'SMS',
         copy: 'Text kopieren',
       },
       copied: 'Anfrage kopiert. Fügen Sie sie in eine Nachricht an die Praxis ein.',
+      telegramCopied:
+        'Der Text ist kopiert. Fügen Sie ihn in den Telegram-Chat ein, der sich öffnet.',
       sentNote:
         'Ihre App öffnet sich mit der fertigen Nachricht. Tippen Sie dort auf Senden; die Praxis meldet sich zur Bestätigung.',
       noChannels:
@@ -957,6 +973,8 @@ export default {
         price:
           'Der Preis hängt von Art und Dauer der Sprechstunde ab. Wir nennen ihn Ihnen bei der Terminbestätigung.',
         hours: 'Sprechzeiten: {hours}.',
+        hoursAsk:
+          'Termine werden individuell vereinbart. Senden Sie eine Anfrage über das Formular auf dieser Seite, und die Praxis schlägt Ihnen eine Zeit vor.',
         urgent:
           'Wenn es sich um einen Notfall handelt, rufen Sie bitte sofort die Notrufnummer an, in der EU die 112. Dieser Chat ist nicht für dringende Hilfe gedacht.',
         thanks: 'Gern geschehen. Alles Gute!',

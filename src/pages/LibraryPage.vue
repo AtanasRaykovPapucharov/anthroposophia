@@ -4,7 +4,7 @@ import PageIntro from '@/components/PageIntro.vue'
 import { BOOKS, LINKS, GLOSSARY } from '@/data/library'
 import { useContent } from '@/composables/useContent'
 
-const { t } = useContent()
+const { t, pick } = useContent()
 const term = ref('')
 
 const glossary = computed(() => {
@@ -54,7 +54,7 @@ const glossary = computed(() => {
             <a :href="l.url" target="_blank" rel="noopener noreferrer" class="link">
               <q-icon :name="l.icon" size="24px" class="link-icon" />
               <span class="link-main">
-                <span class="link-name">{{ l.name }}</span>
+                <span class="link-name">{{ pick(l.name) }}</span>
                 <span class="link-text">{{ t(`library.links.${l.id}`) }}</span>
                 <span class="link-url">{{ l.url.replace('https://', '') }}</span>
               </span>

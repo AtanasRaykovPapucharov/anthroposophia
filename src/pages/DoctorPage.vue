@@ -20,16 +20,25 @@ const route = useRoute()
 
 const contact = computed(() => doctor.value.contact)
 
+const regionNames = computed(() => {
+  try {
+    return new Intl.DisplayNames([locale.value], { type: 'region' })
+  } catch {
+    return null
+  }
+})
+const countryName = (cc) => regionNames.value?.of(cc) ?? cc
+
 // chat and in-app call (demo for now, see src/services)
 const chat = useChatStore()
 const callOpen = ref(false)
 
 // ---------------------------------------------------------------- form state
-const kinds = ['first', 'followup', 'online', 'group']
+const kinds = computed(() => doctor.value.requestKinds)
 const times = ['morning', 'afternoon', 'any']
 
 const form = ref({
-  kind: 'first',
+  kind: doctor.value.requestKinds[0],
   group: '',
   name: '',
   phone: '',
@@ -130,6 +139,13 @@ const channels = computed(() => {
       href: `https://wa.me/${c.whatsapp}?text=${text}`,
     })
   if (c.viber) out.push({ id: 'viber', icon: 'sym_r_forum', href: `viber://forward?text=${text}` })
+  if (c.telegram)
+    out.push({
+      id: 'telegram',
+      icon: 'sym_r_send',
+      href: `https://t.me/${c.telegram}`,
+      beforeOpen: copyForTelegram,
+    })
   if (c.phone)
     out.push({
       id: 'sms',
@@ -149,6 +165,21 @@ async function prepare() {
   prepared.value = true
   await nextTick()
   document.getElementById('send-options')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+}
+
+// Telegram links cannot carry a text, so copy it first and tell the person to paste it
+async function copyForTelegram() {
+  try {
+    await copyToClipboard(message.value)
+    $q.notify({
+      message: t('doctor.form.telegramCopied'),
+      icon: 'sym_r_content_paste',
+      color: 'positive',
+      timeout: 6000,
+    })
+  } catch {
+    // copying failed: the preview below still shows the text
+  }
 }
 
 async function copyMessage() {
@@ -232,6 +263,18 @@ const faq = ['bring', 'cost', 'cancel', 'privacy']
               @click="callOpen = true"
             />
             <q-btn
+              v-if="contact.telegram"
+              flat
+              no-caps
+              size="lg"
+              icon="sym_r_send"
+              :label="t('doctor.telegram')"
+              :href="`https://t.me/${contact.telegram}`"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="ghost-btn"
+            />
+            <q-btn
               v-if="contact.phone"
               flat
               no-caps
@@ -252,6 +295,30 @@ const faq = ['bring', 'cost', 'cancel', 'privacy']
         <div class="reading">
           <h2 id="about-title">{{ t('doctor.about') }}</h2>
           <p v-for="(p, i) in doctor.bio" :key="i">{{ p }}</p>
+
+          <template v-if="doctor.qualifications.length">
+            <h3 class="sub-title">{{ t('doctor.qualifications') }}</h3>
+            <ol class="quals">
+              <li v-for="q in doctor.qualifications" :key="q.year + q.cc">
+                <span class="qual-year">{{ q.year }}</span>
+                <span
+                  >{{ q.title }} <span class="muted">({{ countryName(q.cc) }})</span></span
+                >
+              </li>
+            </ol>
+          </template>
+
+          <q-btn
+            v-if="contact.website"
+            flat
+            no-caps
+            icon="sym_r_language"
+            :label="t('doctor.website')"
+            :href="contact.website"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fb-btn"
+          />
           <q-btn
             v-if="contact.facebook"
             flat
@@ -287,6 +354,24 @@ const faq = ['bring', 'cost', 'cancel', 'privacy']
             <dt><q-icon name="sym_r_translate" /> {{ t('doctor.languages') }}</dt>
             <dd>{{ doctor.languages }}</dd>
           </div>
+          <div v-if="contact.email">
+            <dt><q-icon name="sym_r_mail" /> {{ t('doctor.emailLabel') }}</dt>
+            <dd>
+              <a :href="`mailto:${contact.email}`">{{ contact.email }}</a>
+            </dd>
+          </div>
+          <div v-if="contact.telegram">
+            <dt><q-icon name="sym_r_send" /> {{ t('doctor.telegram') }}</dt>
+            <dd>
+              <a
+                :href="`https://t.me/${contact.telegram}`"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                t.me/{{ contact.telegram }}
+              </a>
+            </dd>
+          </div>
           <div v-if="contact.phone">
             <dt><q-icon name="sym_r_call" /> {{ t('doctor.form.phone') }}</dt>
             <dd>
@@ -294,6 +379,40 @@ const faq = ['bring', 'cost', 'cancel', 'privacy']
             </dd>
           </div>
         </dl>
+      </section>
+
+      <!-- method of work -->
+      <section v-if="doctor.method" class="method" aria-labelledby="method-title">
+        <h2 id="method-title">{{ t('doctor.method.title') }}</h2>
+        <div class="reading">
+          <p v-for="(p, i) in doctor.method.approach" :key="i">{{ p }}</p>
+        </div>
+        <div class="fit">
+          <div class="fit-col fit-col--yes">
+            <h3>{{ t('doctor.method.suitable') }}</h3>
+            <ul>
+              <li v-for="(x, i) in doctor.method.suitable" :key="i">
+                <q-icon name="sym_r_check_circle" size="20px" /> {{ x }}
+              </li>
+            </ul>
+          </div>
+          <div class="fit-col fit-col--no">
+            <h3>{{ t('doctor.method.notSuitable') }}</h3>
+            <ul>
+              <li v-for="(x, i) in doctor.method.notSuitable" :key="i">
+                <q-icon name="sym_r_do_not_disturb_on" size="20px" /> {{ x }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="sub-title">{{ t('doctor.method.firstVisit') }}</h3>
+        <ol class="first-visit">
+          <li v-for="(x, i) in doctor.method.firstVisit" :key="i">{{ x }}</li>
+        </ol>
+        <p v-if="doctor.method.firstVisitNote" class="bring-note">
+          <q-icon name="sym_r_folder_open" size="22px" /> {{ doctor.method.firstVisitNote }}
+        </p>
+        <p class="small muted">{{ t('doctor.method.source') }}</p>
       </section>
 
       <!-- how it works -->
@@ -333,7 +452,11 @@ const faq = ['bring', 'cost', 'cancel', 'privacy']
               no-caps
               icon="sym_r_group_add"
               :label="
-                g.status === 'waitlist' ? t('doctor.groups.joinWaitlist') : t('doctor.groups.join')
+                g.status === 'waitlist'
+                  ? t('doctor.groups.joinWaitlist')
+                  : g.status === 'inquiry'
+                    ? t('doctor.groups.inquiryJoin')
+                    : t('doctor.groups.join')
               "
               class="btn-book"
               @click="joinGroup(g.id)"
@@ -474,8 +597,9 @@ const faq = ['bring', 'cost', 'cancel', 'privacy']
                 :icon="c.icon"
                 :label="t(`doctor.form.via.${c.id}`)"
                 :href="c.href"
-                :target="c.id === 'whatsapp' ? '_blank' : undefined"
+                :target="['whatsapp', 'telegram'].includes(c.id) ? '_blank' : undefined"
                 rel="noopener noreferrer"
+                @click="c.beforeOpen && c.beforeOpen()"
               />
               <q-btn
                 outline
@@ -638,6 +762,114 @@ const faq = ['bring', 'cost', 'cancel', 'privacy']
   }
   .facts {
     margin-top: 2.6em;
+  }
+}
+
+.sub-title {
+  font-size: 1.3rem;
+  margin: 1.4em 0 0.6em;
+}
+
+.quals {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  gap: 8px;
+
+  li {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 10px;
+    line-height: 1.45;
+  }
+}
+
+.qual-year {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--app-muted);
+  font-variant-numeric: lining-nums;
+}
+
+.method {
+  margin-top: 8px;
+}
+
+.fit {
+  display: grid;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+@media (min-width: 760px) {
+  .fit {
+    grid-template-columns: 1.3fr 1fr;
+  }
+}
+
+.fit-col {
+  padding: 16px 20px;
+  border-radius: var(--shape-organic);
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+
+  h3 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 8px;
+    line-height: 1.45;
+  }
+}
+
+.fit-col--yes .q-icon {
+  color: var(--q-positive);
+  margin-top: 1px;
+}
+
+.fit-col--no {
+  background: color-mix(in srgb, var(--q-negative) 7%, var(--app-surface));
+
+  .q-icon {
+    color: var(--q-negative);
+    margin-top: 1px;
+  }
+}
+
+.first-visit {
+  margin: 0 0 12px;
+  padding-left: 1.3em;
+  max-width: 66ch;
+
+  li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+}
+
+.bring-note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-weight: 600;
+  max-width: 66ch;
+
+  .q-icon {
+    color: var(--c-book);
+    flex: none;
   }
 }
 

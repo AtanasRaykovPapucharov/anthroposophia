@@ -1,7 +1,9 @@
 // Anthroposophical centres around the world.
 // Coordinates are approximate (street or town level). Some entries mark a city where
 // several initiatives exist (`cityLevel: true`). A short description per language lives
-// in i18n under map.centers.<id>. Country names are localised at runtime with Intl.DisplayNames.
+// in i18n under map.centers.<id>. Place names (and names that are not official proper names)
+// are given per language below; official institution names stay in their original form; country names are
+// localised at runtime with Intl.DisplayNames.
 
 export const CATEGORIES = [
   { id: 'society', icon: 'sym_r_account_balance', color: '#3b4a8c' },
@@ -19,7 +21,7 @@ export const CENTERS = [
   {
     id: 'goetheanum',
     name: 'Goetheanum',
-    place: 'Dornach',
+    place: { 'en-US': 'Dornach', bg: 'Дорнах', ru: 'Дорнах', de: 'Dornach', ja: 'ドルナッハ' },
     cc: 'CH',
     lat: 47.4865,
     lng: 7.6206,
@@ -30,7 +32,13 @@ export const CENTERS = [
   {
     id: 'klinikArlesheim',
     name: 'Klinik Arlesheim',
-    place: 'Arlesheim',
+    place: {
+      'en-US': 'Arlesheim',
+      bg: 'Арлесхайм',
+      ru: 'Арлесхайм',
+      de: 'Arlesheim',
+      ja: 'アルレスハイム',
+    },
     cc: 'CH',
     lat: 47.4938,
     lng: 7.6222,
@@ -40,7 +48,13 @@ export const CENTERS = [
   {
     id: 'weleda',
     name: 'Weleda',
-    place: 'Arlesheim',
+    place: {
+      'en-US': 'Arlesheim',
+      bg: 'Арлесхайм',
+      ru: 'Арлесхайм',
+      de: 'Arlesheim',
+      ja: 'アルレスハイム',
+    },
     cc: 'CH',
     lat: 47.4921,
     lng: 7.6245,
@@ -52,8 +66,20 @@ export const CENTERS = [
   // Places in Rudolf Steiner's life
   {
     id: 'kraljevec',
-    name: 'Donji Kraljevec',
-    place: 'Međimurje',
+    name: {
+      'en-US': 'Donji Kraljevec',
+      bg: 'Долни Кралевец',
+      ru: 'Донье-Кральевец',
+      de: 'Donji Kraljevec',
+      ja: 'ドニ・クラリェヴェツ',
+    },
+    place: {
+      'en-US': 'Međimurje',
+      bg: 'Меджимурие',
+      ru: 'Меджимурье',
+      de: 'Međimurje',
+      ja: 'メジムリェ',
+    },
     cc: 'HR',
     lat: 46.3667,
     lng: 16.65,
@@ -63,7 +89,7 @@ export const CENTERS = [
   {
     id: 'vienna',
     name: 'TU Wien',
-    place: 'Wien',
+    place: { 'en-US': 'Vienna', bg: 'Виена', ru: 'Вена', de: 'Wien', ja: 'ウィーン' },
     cc: 'AT',
     lat: 48.199,
     lng: 16.3699,
@@ -73,7 +99,7 @@ export const CENTERS = [
   {
     id: 'weimar',
     name: 'Goethe- und Schiller-Archiv',
-    place: 'Weimar',
+    place: { 'en-US': 'Weimar', bg: 'Ваймар', ru: 'Веймар', de: 'Weimar', ja: 'ワイマール' },
     cc: 'DE',
     lat: 50.9835,
     lng: 11.3332,
@@ -83,7 +109,13 @@ export const CENTERS = [
   {
     id: 'koberwitz',
     name: 'Koberwitz / Kobierzyce',
-    place: 'Kobierzyce',
+    place: {
+      'en-US': 'Kobierzyce',
+      bg: 'Кобежице',
+      ru: 'Кобежице',
+      de: 'Kobierzyce (Koberwitz)',
+      ja: 'コビェジツェ',
+    },
     cc: 'PL',
     lat: 51.014,
     lng: 16.935,
@@ -95,7 +127,13 @@ export const CENTERS = [
   {
     id: 'waldorfStuttgart',
     name: 'Freie Waldorfschule Uhlandshöhe',
-    place: 'Stuttgart',
+    place: {
+      'en-US': 'Stuttgart',
+      bg: 'Щутгарт',
+      ru: 'Штутгарт',
+      de: 'Stuttgart',
+      ja: 'シュトゥットガルト',
+    },
     cc: 'DE',
     lat: 48.7756,
     lng: 9.1968,
@@ -105,7 +143,7 @@ export const CENTERS = [
   {
     id: 'herdecke',
     name: 'Gemeinschaftskrankenhaus Herdecke',
-    place: 'Herdecke',
+    place: { 'en-US': 'Herdecke', bg: 'Хердеке', ru: 'Хердекке', de: 'Herdecke', ja: 'ヘルデッケ' },
     cc: 'DE',
     lat: 51.3987,
     lng: 7.4331,
@@ -115,7 +153,7 @@ export const CENTERS = [
   {
     id: 'wittenHerdecke',
     name: 'Universität Witten/Herdecke',
-    place: 'Witten',
+    place: { 'en-US': 'Witten', bg: 'Витен', ru: 'Виттен', de: 'Witten', ja: 'ヴィッテン' },
     cc: 'DE',
     lat: 51.4468,
     lng: 7.3388,
@@ -126,7 +164,13 @@ export const CENTERS = [
   {
     id: 'filderklinik',
     name: 'Filderklinik',
-    place: 'Filderstadt',
+    place: {
+      'en-US': 'Filderstadt',
+      bg: 'Филдерщадт',
+      ru: 'Фильдерштадт',
+      de: 'Filderstadt',
+      ja: 'フィルダーシュタット',
+    },
     cc: 'DE',
     lat: 48.6585,
     lng: 9.2265,
@@ -136,7 +180,7 @@ export const CENTERS = [
   {
     id: 'havelhoehe',
     name: 'Gemeinschaftskrankenhaus Havelhöhe',
-    place: 'Berlin',
+    place: { 'en-US': 'Berlin', bg: 'Берлин', ru: 'Берлин', de: 'Berlin', ja: 'ベルリン' },
     cc: 'DE',
     lat: 52.4692,
     lng: 13.1526,
@@ -146,7 +190,13 @@ export const CENTERS = [
   {
     id: 'wala',
     name: 'WALA Heilmittel',
-    place: 'Bad Boll',
+    place: {
+      'en-US': 'Bad Boll',
+      bg: 'Бад Бол',
+      ru: 'Бад-Болль',
+      de: 'Bad Boll',
+      ja: 'バート・ボル',
+    },
     cc: 'DE',
     lat: 48.6392,
     lng: 9.6128,
@@ -156,7 +206,7 @@ export const CENTERS = [
   {
     id: 'alanus',
     name: 'Alanus Hochschule',
-    place: 'Alfter',
+    place: { 'en-US': 'Alfter', bg: 'Алфтер', ru: 'Альфтер', de: 'Alfter', ja: 'アルフター' },
     cc: 'DE',
     lat: 50.7302,
     lng: 7.0058,
@@ -167,7 +217,13 @@ export const CENTERS = [
   {
     id: 'dottenfelderhof',
     name: 'Dottenfelderhof',
-    place: 'Bad Vilbel',
+    place: {
+      'en-US': 'Bad Vilbel',
+      bg: 'Бад Вилбел',
+      ru: 'Бад-Фильбель',
+      de: 'Bad Vilbel',
+      ja: 'バート・フィルベル',
+    },
     cc: 'DE',
     lat: 50.1897,
     lng: 8.7468,
@@ -179,7 +235,7 @@ export const CENTERS = [
   {
     id: 'louisBolk',
     name: 'Louis Bolk Instituut',
-    place: 'Bunnik',
+    place: { 'en-US': 'Bunnik', bg: 'Буник', ru: 'Бунник', de: 'Bunnik', ja: 'ブニク' },
     cc: 'NL',
     lat: 52.0651,
     lng: 5.1962,
@@ -189,7 +245,13 @@ export const CENTERS = [
   {
     id: 'triodos',
     name: 'Triodos Bank',
-    place: 'Driebergen-Rijsenburg',
+    place: {
+      'en-US': 'Driebergen-Rijsenburg',
+      bg: 'Дриберген-Рейсенбург',
+      ru: 'Дриберген-Рейсенбург',
+      de: 'Driebergen-Rijsenburg',
+      ja: 'ドリーベルヘン＝ライゼンブルク',
+    },
     cc: 'NL',
     lat: 52.0533,
     lng: 5.2807,
@@ -200,7 +262,13 @@ export const CENTERS = [
   {
     id: 'camphillAberdeen',
     name: 'Camphill Estate',
-    place: 'Aberdeen',
+    place: {
+      'en-US': 'Aberdeen',
+      bg: 'Абърдийн',
+      ru: 'Абердин',
+      de: 'Aberdeen',
+      ja: 'アバディーン',
+    },
     cc: 'GB',
     lat: 57.1012,
     lng: -2.2398,
@@ -210,7 +278,7 @@ export const CENTERS = [
   {
     id: 'steinerHouse',
     name: 'Rudolf Steiner House',
-    place: 'London',
+    place: { 'en-US': 'London', bg: 'Лондон', ru: 'Лондон', de: 'London', ja: 'ロンドン' },
     cc: 'GB',
     lat: 51.5241,
     lng: -0.1601,
@@ -220,7 +288,13 @@ export const CENTERS = [
   {
     id: 'emerson',
     name: 'Emerson College',
-    place: 'Forest Row',
+    place: {
+      'en-US': 'Forest Row',
+      bg: 'Форест Роу',
+      ru: 'Форест-Роу',
+      de: 'Forest Row',
+      ja: 'フォレスト・ロウ',
+    },
     cc: 'GB',
     lat: 51.0958,
     lng: 0.0302,
@@ -229,8 +303,14 @@ export const CENTERS = [
   },
   {
     id: 'jarna',
-    name: 'Järna',
-    place: 'Södertälje',
+    name: { 'en-US': 'Järna', bg: 'Йерна', ru: 'Ярна', de: 'Järna', ja: 'イェーナ' },
+    place: {
+      'en-US': 'Södertälje',
+      bg: 'Сьодертелие',
+      ru: 'Сёдертелье',
+      de: 'Södertälje',
+      ja: 'セーデルテリエ',
+    },
     cc: 'SE',
     lat: 59.093,
     lng: 17.567,
@@ -240,7 +320,7 @@ export const CENTERS = [
   {
     id: 'sofia',
     name: 'Валдорфско училище „Проф. Николай Райнов“',
-    place: 'Sofia',
+    place: { 'en-US': 'Sofia', bg: 'София', ru: 'София', de: 'Sofia', ja: 'ソフィア' },
     cc: 'BG',
     lat: 42.6785,
     lng: 23.357,
@@ -248,8 +328,8 @@ export const CENTERS = [
   },
   {
     id: 'moscow',
-    name: 'Moscow',
-    place: 'Moscow',
+    name: { 'en-US': 'Moscow', bg: 'Москва', ru: 'Москва', de: 'Moskau', ja: 'モスクワ' },
+    place: { 'en-US': 'Moscow', bg: 'Москва', ru: 'Москва', de: 'Moskau', ja: 'モスクワ' },
     cc: 'RU',
     lat: 55.7558,
     lng: 37.6173,
@@ -261,7 +341,7 @@ export const CENTERS = [
   {
     id: 'sekem',
     name: 'SEKEM',
-    place: 'Bilbeis',
+    place: { 'en-US': 'Bilbeis', bg: 'Билбейс', ru: 'Бильбейс', de: 'Bilbeis', ja: 'ビルベイス' },
     cc: 'EG',
     lat: 30.39,
     lng: 31.51,
@@ -272,7 +352,7 @@ export const CENTERS = [
   {
     id: 'mbagathi',
     name: 'Rudolf Steiner School Mbagathi',
-    place: 'Nairobi',
+    place: { 'en-US': 'Nairobi', bg: 'Найроби', ru: 'Найроби', de: 'Nairobi', ja: 'ナイロビ' },
     cc: 'KE',
     lat: -1.3305,
     lng: 36.7712,
@@ -282,7 +362,13 @@ export const CENTERS = [
   {
     id: 'capeTown',
     name: 'Centre for Creative Education',
-    place: 'Cape Town',
+    place: {
+      'en-US': 'Cape Town',
+      bg: 'Кейптаун',
+      ru: 'Кейптаун',
+      de: 'Kapstadt',
+      ja: 'ケープタウン',
+    },
     cc: 'ZA',
     lat: -33.98,
     lng: 18.47,
@@ -294,7 +380,13 @@ export const CENTERS = [
   {
     id: 'steinerNY',
     name: 'Rudolf Steiner School',
-    place: 'New York',
+    place: {
+      'en-US': 'New York',
+      bg: 'Ню Йорк',
+      ru: 'Нью-Йорк',
+      de: 'New York',
+      ja: 'ニューヨーク',
+    },
     cc: 'US',
     lat: 40.7765,
     lng: -73.9625,
@@ -303,8 +395,20 @@ export const CENTERS = [
   },
   {
     id: 'asaAnnArbor',
-    name: 'Anthroposophical Society in America',
-    place: 'Ann Arbor',
+    name: {
+      'en-US': 'Anthroposophical Society in America',
+      bg: 'Антропософско общество в Америка',
+      ru: 'Антропософское общество в Америке',
+      de: 'Anthroposophische Gesellschaft in Amerika',
+      ja: 'アメリカ・アントロポゾフィー協会',
+    },
+    place: {
+      'en-US': 'Ann Arbor',
+      bg: 'Ан Арбър',
+      ru: 'Анн-Арбор',
+      de: 'Ann Arbor',
+      ja: 'アナーバー',
+    },
     cc: 'US',
     lat: 42.2808,
     lng: -83.743,
@@ -314,7 +418,13 @@ export const CENTERS = [
   {
     id: 'kimberton',
     name: 'Camphill Village Kimberton Hills',
-    place: 'Kimberton',
+    place: {
+      'en-US': 'Kimberton',
+      bg: 'Кимбертън',
+      ru: 'Кимбертон',
+      de: 'Kimberton',
+      ja: 'キンバートン',
+    },
     cc: 'US',
     lat: 40.129,
     lng: -75.575,
@@ -324,7 +434,13 @@ export const CENTERS = [
   {
     id: 'hawthorne',
     name: 'Hawthorne Valley Farm',
-    place: 'Ghent, NY',
+    place: {
+      'en-US': 'Ghent, NY',
+      bg: 'Гент, Ню Йорк',
+      ru: 'Гент, Нью-Йорк',
+      de: 'Ghent, NY',
+      ja: 'ゲント（ニューヨーク州）',
+    },
     cc: 'US',
     lat: 42.306,
     lng: -73.625,
@@ -334,7 +450,13 @@ export const CENTERS = [
   {
     id: 'monteAzul',
     name: 'Associação Comunitária Monte Azul',
-    place: 'São Paulo',
+    place: {
+      'en-US': 'São Paulo',
+      bg: 'Сао Пауло',
+      ru: 'Сан-Паулу',
+      de: 'São Paulo',
+      ja: 'サンパウロ',
+    },
     cc: 'BR',
     lat: -23.665,
     lng: -46.755,
@@ -345,8 +467,20 @@ export const CENTERS = [
   // Asia & Oceania
   {
     id: 'fujino',
-    name: 'Steiner Gakuen',
-    place: 'Sagamihara (Fujino)',
+    name: {
+      'en-US': 'Steiner Gakuen',
+      bg: 'Щайнер Гакуен',
+      ru: 'Штайнер Гакуэн',
+      de: 'Steiner Gakuen',
+      ja: 'シュタイナー学園',
+    },
+    place: {
+      'en-US': 'Sagamihara (Fujino)',
+      bg: 'Сагамихара (Фуджино)',
+      ru: 'Сагамихара (Фудзино)',
+      de: 'Sagamihara (Fujino)',
+      ja: '相模原市（藤野）',
+    },
     cc: 'JP',
     lat: 35.6,
     lng: 139.17,
@@ -355,8 +489,20 @@ export const CENTERS = [
   },
   {
     id: 'kyotanabe',
-    name: 'Kyotanabe Steiner School',
-    place: 'Kyōtanabe',
+    name: {
+      'en-US': 'Kyotanabe Steiner School',
+      bg: 'Щайнерово училище Киотанабе',
+      ru: 'Штайнеровская школа Киотанабе',
+      de: 'Steinerschule Kyōtanabe',
+      ja: '京田辺シュタイナー学校',
+    },
+    place: {
+      'en-US': 'Kyōtanabe',
+      bg: 'Киотанабе',
+      ru: 'Киотанабе',
+      de: 'Kyōtanabe',
+      ja: '京田辺市',
+    },
     cc: 'JP',
     lat: 34.81,
     lng: 135.77,
@@ -366,7 +512,7 @@ export const CENTERS = [
   {
     id: 'cixin',
     name: 'Ci-Xin Waldorf School',
-    place: 'Yilan',
+    place: { 'en-US': 'Yilan', bg: 'Илан', ru: 'Илань', de: 'Yilan', ja: '宜蘭' },
     cc: 'TW',
     lat: 24.75,
     lng: 121.75,
@@ -375,7 +521,7 @@ export const CENTERS = [
   {
     id: 'chengdu',
     name: 'Chengdu Waldorf School',
-    place: 'Chengdu',
+    place: { 'en-US': 'Chengdu', bg: 'Чънду', ru: 'Чэнду', de: 'Chengdu', ja: '成都' },
     cc: 'CN',
     lat: 30.65,
     lng: 104.06,
@@ -385,7 +531,7 @@ export const CENTERS = [
   {
     id: 'glenaeon',
     name: 'Glenaeon Rudolf Steiner School',
-    place: 'Sydney',
+    place: { 'en-US': 'Sydney', bg: 'Сидни', ru: 'Сидней', de: 'Sydney', ja: 'シドニー' },
     cc: 'AU',
     lat: -33.8045,
     lng: 151.208,
