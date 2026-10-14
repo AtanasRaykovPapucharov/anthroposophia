@@ -25,14 +25,23 @@ export const LOCALE_OPTIONS = [
 ]
 
 const THEME_KEY = 'anthroposophia-theme'
-const THEMES = ['auto', 'light', 'dark']
+const THEMES = ['light', 'dark']
+
+// first visit: start with the device's preference, then remember the person's choice
+function systemTheme() {
+  try {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  } catch {
+    return 'light'
+  }
+}
 
 function readTheme() {
   try {
     const saved = LocalStorage.getItem(THEME_KEY)
-    return THEMES.includes(saved) ? saved : 'auto'
+    return THEMES.includes(saved) ? saved : systemTheme()
   } catch {
-    return 'auto'
+    return systemTheme()
   }
 }
 
@@ -64,11 +73,11 @@ export const useSettingsStore = defineStore('settings', {
       } catch {
         // ignore
       }
-      Dark.set(theme === 'auto' ? 'auto' : theme === 'dark')
+      Dark.set(theme === 'dark')
     },
 
-    cycleTheme() {
-      this.setTheme(THEMES[(THEMES.indexOf(this.theme) + 1) % THEMES.length])
+    toggleTheme() {
+      this.setTheme(this.theme === 'dark' ? 'light' : 'dark')
     },
   },
 })

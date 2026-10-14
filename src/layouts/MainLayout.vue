@@ -54,13 +54,13 @@ const currentLocale = computed(
   () => LOCALE_OPTIONS.find((l) => l.value === settings.locale) ?? LOCALE_OPTIONS[0],
 )
 
-const themeIcon = computed(
-  () =>
-    ({ auto: 'sym_r_brightness_auto', light: 'sym_r_light_mode', dark: 'sym_r_dark_mode' })[
-      settings.theme
-    ],
+// the button shows the mode it switches to
+const themeIcon = computed(() =>
+  settings.theme === 'dark' ? 'sym_r_light_mode' : 'sym_r_dark_mode',
 )
-const themeLabel = computed(() => t(`nav.theme.${settings.theme}`))
+const themeLabel = computed(() =>
+  t(settings.theme === 'dark' ? 'nav.theme.light' : 'nav.theme.dark'),
+)
 </script>
 
 <template>
@@ -81,7 +81,7 @@ const themeLabel = computed(() => t(`nav.theme.${settings.theme}`))
           class="tool-btn"
           :icon="themeIcon"
           :aria-label="themeLabel"
-          @click="settings.cycleTheme()"
+          @click="settings.toggleTheme()"
         >
           <q-tooltip>{{ themeLabel }}</q-tooltip>
         </q-btn>

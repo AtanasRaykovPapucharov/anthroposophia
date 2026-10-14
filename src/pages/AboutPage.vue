@@ -38,7 +38,6 @@ const version = '1.0.0'
           <q-btn-toggle
             :model-value="settings.theme"
             :options="[
-              { label: t('nav.theme.auto'), value: 'auto', icon: 'sym_r_brightness_auto' },
               { label: t('nav.theme.light'), value: 'light', icon: 'sym_r_light_mode' },
               { label: t('nav.theme.dark'), value: 'dark', icon: 'sym_r_dark_mode' },
             ]"
