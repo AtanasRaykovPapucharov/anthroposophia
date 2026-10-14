@@ -1,0 +1,265 @@
+// Anthroposophia — global styles
+// ---------------------------------------------------------------------------
+// Design notes
+// - Colour: lazure veils (translucent layered washes) over a pale lilac page;
+//   deep indigo night in dark mode.
+// - Type: Alegreya (humanist calligraphic serif) for headings and long reading,
+//   Alegreya Sans for interface text. Zen Old Mincho / Zen Kaku Gothic New for Japanese.
+// - Shape: organic, asymmetric corners (no sharp right angles, echoing the Goetheanum).
+
+:root {
+  --font-serif: 'Alegreya', 'Zen Old Mincho', 'Noto Serif JP', Georgia, 'Times New Roman', serif;
+  --font-sans:
+    'Alegreya Sans', 'Zen Kaku Gothic New', 'Noto Sans JP', system-ui, -apple-system, 'Segoe UI',
+    Roboto, sans-serif;
+
+  // type scale (≈ 1.25 ratio, 17px base)
+  --fs-small: 0.875rem;
+  --fs-body: 1.0625rem;
+  --fs-h4: 1.3rem;
+  --fs-h3: 1.6rem;
+  --fs-h2: 2.05rem;
+  --fs-h1: clamp(2.3rem, 6vw, 3.6rem);
+  --fs-hero: clamp(2.8rem, 9vw, 5.4rem);
+
+  --c-indigo: #2e3a6e;
+  --c-peach: #e9a89b;
+  --c-green: #6f9e6a;
+  --c-gold: #e0b04a;
+  --c-violet: #8a6bb8;
+  --c-rose: #b5517a;
+  --c-teal: #3e8e9a;
+  --c-earth: #8c6f5a;
+
+  --shape-organic: 26px 10px 26px 10px;
+  --shape-leaf: 30px 4px 30px 4px;
+  --page-max: 1080px;
+  --reading-max: 68ch;
+}
+
+// Japanese reads better with the Japanese faces first and a little more leading
+:lang(ja) {
+  --font-serif: 'Zen Old Mincho', 'Noto Serif JP', 'Alegreya', serif;
+  --font-sans: 'Zen Kaku Gothic New', 'Noto Sans JP', 'Alegreya Sans', system-ui, sans-serif;
+}
+
+body.body--light {
+  --app-page: #f3f1f8;
+  --app-surface: #fdfcff;
+  --app-surface-soft: #ebe7f4;
+  --app-surface-tint: #e4def0;
+  --app-text: #262a45;
+  --app-muted: #5a5e7d;
+  --app-border: #d9d3e8;
+  --app-header: rgba(243, 241, 248, 0.86);
+  --veil-blend: multiply;
+  --veil-opacity: 0.75;
+}
+
+body.body--dark {
+  --app-page: #131833;
+  --app-surface: #1b2144;
+  --app-surface-soft: #232a55;
+  --app-surface-tint: #2b3363;
+  --app-text: #ecebf7;
+  --app-muted: #aeb0d0;
+  --app-border: #343c6e;
+  --app-header: rgba(19, 24, 51, 0.86);
+  --veil-blend: screen;
+  --veil-opacity: 0.55;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  background-color: var(--app-page);
+  color: var(--app-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-serif {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--app-text);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  line-height: 1.08;
+  margin: 0 0 0.4em;
+}
+h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.15;
+  margin: 1.6em 0 0.5em;
+}
+h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  margin: 1.2em 0 0.4em;
+}
+h4 {
+  font-size: var(--fs-h4);
+  line-height: 1.25;
+  margin: 1em 0 0.3em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--q-primary);
+  text-underline-offset: 0.18em;
+}
+body.body--dark a {
+  color: #b9c4ff;
+}
+
+// the indigo primary is too dark for text on the night background
+body.body--dark .text-primary,
+body.body--dark .q-btn.text-primary {
+  color: #b9c4ff !important;
+}
+
+// visible keyboard focus everywhere
+:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.q-btn {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+// ---------------------------------------------------------------------------
+// Page scaffolding
+
+.q-page-container,
+.q-page {
+  background-color: var(--app-page);
+  color: var(--app-text);
+}
+
+.page-wrap {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+@media (min-width: 600px) {
+  .page-wrap {
+    padding: 36px 32px 72px;
+  }
+}
+
+.reading {
+  max-width: var(--reading-max);
+}
+
+.reading p,
+.prose {
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+
+:lang(ja) .reading p,
+:lang(ja) .prose {
+  font-size: 1.02rem;
+  line-height: 1.95;
+}
+
+.lead {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  line-height: 1.55;
+  color: var(--app-muted);
+  max-width: 60ch;
+}
+
+.muted {
+  color: var(--app-muted);
+}
+
+.small {
+  font-size: var(--fs-small);
+}
+
+// organic surfaces — used sparingly, not on every block
+.surface {
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: var(--shape-organic);
+}
+
+.surface-soft {
+  background: var(--app-surface-soft);
+  border-radius: var(--shape-organic);
+}
+
+.q-drawer {
+  background-color: var(--app-surface) !important;
+  color: var(--app-text);
+}
+
+.q-separator {
+  background-color: var(--app-border);
+}
+
+.q-item {
+  color: var(--app-text);
+}
+
+.q-expansion-item .q-item__label {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+}
+
+.q-field--outlined .q-field__control:before {
+  border-color: var(--app-border);
+}
+
+.q-chip {
+  font-family: var(--font-sans);
+}
+
+.q-dialog__inner > .q-card,
+.q-menu {
+  background: var(--app-surface);
+  color: var(--app-text);
+}
+
+// respect people who prefer less motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
