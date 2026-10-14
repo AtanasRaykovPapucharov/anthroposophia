@@ -21,18 +21,18 @@ defineProps({ compact: { type: Boolean, default: false } })
   align-items: flex-start;
   padding: 18px 20px;
   border-radius: 24px 6px 24px 6px;
-  background: color-mix(in srgb, var(--c-gold) 18%, var(--app-surface));
-  border: 1px solid color-mix(in srgb, var(--c-gold) 45%, transparent);
+  background: color-mix(in srgb, var(--c-teal) 14%, var(--app-surface));
+  border: 1px solid color-mix(in srgb, var(--c-teal) 45%, transparent);
 }
 
 .safety-icon {
-  color: #9b6f12;
+  color: #2f7884;
   flex: none;
   margin-top: 2px;
 }
 
 body.body--dark .safety-icon {
-  color: var(--c-gold);
+  color: #7cc7d1;
 }
 
 .safety-title {

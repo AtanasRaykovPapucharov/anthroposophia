@@ -3,6 +3,7 @@ import { ref, computed, watch } from 'vue'
 import { useQuasar, copyToClipboard, LocalStorage } from 'quasar'
 import PageIntro from '@/components/PageIntro.vue'
 import SafetyNote from '@/components/SafetyNote.vue'
+import DoctorFeature from '@/components/DoctorFeature.vue'
 import { THERAPIES, EMERGENCY } from '@/data/health'
 import { LINKS } from '@/data/library'
 import { useContent } from '@/composables/useContent'
@@ -65,6 +66,8 @@ const findLinks = LINKS.filter((l) => ['medsection', 'ivaa'].includes(l.id))
       />
 
       <SafetyNote />
+
+      <DoctorFeature variant="health" />
 
       <section aria-labelledby="am-title" class="reading">
         <h2 id="am-title">{{ t('health.what.title') }}</h2>

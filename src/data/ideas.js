@@ -23,7 +23,7 @@ export const LIFE_PHASES = [
 
 // The four members of the human being, from densest to most spiritual
 export const FOUR_MEMBERS = [
-  { id: 'physical', color: 'var(--c-earth)' },
+  { id: 'physical', color: 'var(--c-stone)' },
   { id: 'etheric', color: 'var(--c-green)' },
   { id: 'astral', color: 'var(--c-violet)' },
   { id: 'ego', color: 'var(--c-gold)' },

@@ -13,6 +13,8 @@ export default {
     festivals: 'Jahresfeste',
     library: 'Bibliothek',
     about: 'Über die App',
+    doctor: 'Termin bei Dr. Dokova',
+    doctorShort: 'Termin',
     more: 'Mehr',
     menu: 'Hauptmenü',
     openMenu: 'Menü öffnen oder schließen',
@@ -828,6 +830,178 @@ export default {
     creditsTitle: 'Danksagung',
     credits:
       'Kartendaten von den Mitwirkenden bei OpenStreetMap. Erstellt mit Quasar, Vue, vue-i18n, Pinia und Leaflet. Schriften Alegreya und Alegreya Sans von Juan Pablo del Peral; Zen Old Mincho und Zen Kaku Gothic New von Yoshimichi Ohira. Die Worte Rudolf Steiners werden im Original wiedergegeben.',
+  },
+
+  doctor: {
+    pageTitle: 'Termine und Therapiegruppen',
+    photoAlt: 'Foto von {name}',
+    bookCta: 'Termin anfragen',
+    joinGroupCta: 'Einer Gruppe beitreten',
+    onlineBooking: 'Online buchen',
+    facebook: 'Profil auf Facebook',
+    about: 'Über die Ärztin',
+    location: 'Praxis',
+    hours: 'Sprechzeiten',
+    languages: 'Sprachen',
+    howTitle: 'So funktioniert die Anfrage',
+    howSteps: [
+      'Füllen Sie das kurze Formular aus und wählen Sie, wie Sie es senden: E-Mail, WhatsApp, Viber oder SMS.',
+      'Die Praxis meldet sich bei Ihnen, um Tag und Uhrzeit zu vereinbaren.',
+      'Ihr Termin oder Gruppenplatz ist gebucht, sobald die Praxis ihn bestätigt hat.',
+    ],
+    feature: {
+      title: 'Termin bei Dr. Dokova vereinbaren',
+      text: 'Fragen Sie eine Sprechstunde oder einen Platz in einer Therapiegruppe an. Das dauert etwa eine Minute.',
+    },
+    healthCta: {
+      title: 'Sie suchen eine anthroposophische Ärztin?',
+      text: 'Fragen Sie eine Sprechstunde an oder treten Sie einer Therapiegruppe bei Dr. Dokova bei.',
+    },
+    groups: {
+      title: 'Therapiegruppen',
+      lead: 'Kleine Gruppen, die sich unter ärztlicher Begleitung regelmäßig treffen. Wählen Sie eine Gruppe und senden Sie eine Anfrage für einen Platz.',
+      empty:
+        'Zurzeit sind keine Gruppen offen. Fragen Sie in Ihrer Anfrage nach kommenden Gruppen.',
+      when: 'Wann',
+      where: 'Wo',
+      join: 'Platz anfragen',
+      joinWaitlist: 'Auf die Warteliste',
+      status: {
+        open: 'Plätze frei',
+        waitlist: 'Warteliste',
+        full: 'Ausgebucht',
+      },
+    },
+    form: {
+      title: 'Terminanfrage',
+      lead: 'Diese App speichert nichts. Ihre Anfrage geht direkt von Ihrem Telefon oder E-Mail-Programm an die Praxis, die den Termin dann bestätigt.',
+      kind: 'Was möchten Sie?',
+      kinds: {
+        first: 'Erstgespräch',
+        followup: 'Folgetermin',
+        online: 'Online-Sprechstunde',
+        group: 'Platz in einer Therapiegruppe',
+      },
+      group: 'Gruppe',
+      name: 'Vor- und Nachname',
+      phone: 'Telefon',
+      email: 'E-Mail (optional)',
+      days: 'Bevorzugte Tage',
+      time: 'Bevorzugte Zeit',
+      times: {
+        morning: 'Vormittags',
+        afternoon: 'Nachmittags',
+        any: 'Egal',
+      },
+      note: 'Kurze Notiz (optional)',
+      noteHint:
+        'Zum Beispiel eine Überweisung oder ein Termin für ein Kind. Bitte keine ausführlichen Gesundheitsdaten eintragen.',
+      consent:
+        'Ich bin einverstanden, dass die Praxis meinen Namen und meine Kontaktdaten zur Terminvereinbarung verwendet.',
+      required: 'Bitte füllen Sie dieses Feld aus',
+      phoneInvalid: 'Bitte geben Sie eine gültige Telefonnummer ein',
+      emailInvalid: 'Bitte geben Sie eine gültige E-Mail-Adresse ein',
+      consentRequired: 'Bitte bestätigen Sie Ihr Einverständnis, um die Anfrage zu senden',
+      send: 'Anfrage vorbereiten',
+      sendVia: 'Anfrage senden per',
+      via: {
+        email: 'E-Mail',
+        whatsapp: 'WhatsApp',
+        viber: 'Viber',
+        sms: 'SMS',
+        copy: 'Text kopieren',
+      },
+      copied: 'Anfrage kopiert. Fügen Sie sie in eine Nachricht an die Praxis ein.',
+      sentNote:
+        'Ihre App öffnet sich mit der fertigen Nachricht. Tippen Sie dort auf Senden; die Praxis meldet sich zur Bestätigung.',
+      noChannels:
+        'Die Kontaktdaten der Praxis sind noch nicht eingetragen. Kopieren Sie den Text und senden Sie ihn selbst.',
+      subject: 'Terminanfrage',
+      msg: {
+        greeting: 'Guten Tag, ich möchte Folgendes anfragen:',
+        group: 'Gruppe',
+        name: 'Name',
+        phone: 'Telefon',
+        email: 'E-Mail',
+        days: 'Bevorzugte Tage',
+        time: 'Bevorzugte Zeit',
+        note: 'Notiz',
+        thanks: 'Vielen Dank, ich freue mich auf Ihre Bestätigung.',
+      },
+    },
+    chat: {
+      open: 'Chat mit der Praxis',
+      title: 'Chat mit der Praxis',
+      placeholder: 'Nachricht schreiben',
+      send: 'Senden',
+      typing: 'schreibt…',
+      clear: 'Neues Gespräch beginnen',
+      close: 'Chat schließen',
+      demo: 'Demo: Nachrichten erreichen die Ärztin noch nicht, die Antworten sind automatisch. Für eine echte Anfrage nutzen Sie bitte das Terminformular.',
+      status: {
+        online: 'online',
+        offline: 'verbinde…',
+      },
+      quick: {
+        book: 'Ich möchte einen Termin vereinbaren',
+        group: 'Erzählen Sie mir von den Therapiegruppen',
+        price: 'Was kostet eine Sprechstunde?',
+        hours: 'Wann sind die Sprechzeiten?',
+      },
+      replies: {
+        welcome: 'Guten Tag! Hier ist die Praxis von {name}. Wie können wir helfen?',
+        booking:
+          'Gern. Am schnellsten geht es über das Formular auf dieser Seite: Wählen Sie die Art des Termins und Ihre Wunschtage, und wir bestätigen eine Uhrzeit.',
+        group:
+          'Die Therapiegruppen stehen mit ihrem aktuellen Status auf dieser Seite. Tippen Sie bei der gewünschten Gruppe auf Platz anfragen.',
+        price:
+          'Der Preis hängt von Art und Dauer der Sprechstunde ab. Wir nennen ihn Ihnen bei der Terminbestätigung.',
+        hours: 'Sprechzeiten: {hours}.',
+        urgent:
+          'Wenn es sich um einen Notfall handelt, rufen Sie bitte sofort die Notrufnummer an, in der EU die 112. Dieser Chat ist nicht für dringende Hilfe gedacht.',
+        thanks: 'Gern geschehen. Alles Gute!',
+        fallback:
+          'Danke für Ihre Nachricht. Die Ärztin oder eine Assistentin antwortet so bald wie möglich.',
+      },
+    },
+    callUi: {
+      title: 'Anruf bei der Praxis',
+      open: 'In der App anrufen',
+      phone: 'Per Telefon anrufen',
+      demo: 'Demo-Anruf: Es gibt noch keine echte Verbindung, und weder Ton noch Bild verlassen Ihr Gerät.',
+      dialing: 'Verbinde…',
+      ringing: 'Es klingelt…',
+      connected: 'Verbunden',
+      ended: 'Anruf beendet',
+      duration: 'Dauer {time}',
+      mute: 'Stumm',
+      unmute: 'Mikrofon an',
+      speaker: 'Lautsprecher',
+      video: 'Kamera',
+      noVideo: 'Video ist in der Demo nicht verfügbar',
+      hangup: 'Auflegen',
+      again: 'Erneut anrufen',
+      close: 'Schließen',
+    },
+    faqTitle: 'Gut zu wissen',
+    faq: {
+      bring: {
+        q: 'Was soll ich mitbringen?',
+        a: 'Aktuelle Befunde, Arztbriefe und Überweisungen sowie eine Liste aller Medikamente und Mittel, die Sie nehmen, auch pflanzliche und homöopathische.',
+      },
+      cost: {
+        q: 'Was kostet eine Sprechstunde?',
+        a: 'Der Preis hängt von Art und Dauer der Sprechstunde ab. Fragen Sie, wenn die Praxis Sie zur Bestätigung anruft.',
+      },
+      cancel: {
+        q: 'Was, wenn ich nicht kommen kann?',
+        a: 'Bitte sagen Sie der Praxis so früh wie möglich Bescheid, damit ein anderer Patient den Termin nutzen kann.',
+      },
+      privacy: {
+        q: 'Was geschieht mit meinen Daten?',
+        a: 'Die App speichert oder sendet von sich aus nichts. Ihre Anfrage geht nur über das E-Mail- oder Messenger-Programm, das Sie wählen, und nur die Praxis erhält sie.',
+      },
+    },
   },
 
   notFound: {

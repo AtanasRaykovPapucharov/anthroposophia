@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import VeilBackdrop from '@/components/VeilBackdrop.vue'
+import DoctorFeature from '@/components/DoctorFeature.vue'
 import { QUOTES } from '@/data/quotes'
 import { FESTIVALS } from '@/data/festivals'
 import { nextOccurrence, daysUntil } from '@/composables/useFestivalDates'
@@ -82,6 +83,8 @@ const upcoming = computed(() => {
     </section>
 
     <div class="page-wrap">
+      <DoctorFeature variant="home" />
+
       <section aria-labelledby="paths-title">
         <h2 id="paths-title" class="section-title">{{ t('home.pathsTitle') }}</h2>
         <div class="paths">

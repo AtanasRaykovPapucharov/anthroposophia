@@ -8,7 +8,7 @@ export const FESTIVALS = [
   { id: 'whitsun', color: 'var(--c-rose)', icon: 'sym_r_local_fire_department', movable: true },
   { id: 'stJohn', color: 'var(--c-gold)', icon: 'sym_r_sunny' },
   { id: 'michaelmas', color: 'var(--c-rose)', icon: 'sym_r_shield' },
-  { id: 'martinmas', color: 'var(--c-earth)', icon: 'sym_r_emoji_objects' },
+  { id: 'martinmas', color: 'var(--c-stone)', icon: 'sym_r_emoji_objects' },
   { id: 'advent', color: 'var(--c-violet)', icon: 'sym_r_spa', movable: true },
-  { id: 'holyNights', color: 'var(--c-indigo)', icon: 'sym_r_nights_stay' },
+  { id: 'holyNights', color: 'var(--c-indigo)', icon: 'sym_r_nightlight' },
 ]

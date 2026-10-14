@@ -31,7 +31,7 @@ export const FIELDS = [
     mapCat: 'social',
   },
   { id: 'arts', icon: 'sym_r_palette', color: 'var(--c-violet)', since: 1912, mapCat: 'arts' },
-  { id: 'architecture', icon: 'sym_r_architecture', color: 'var(--c-earth)', since: 1913 },
+  { id: 'architecture', icon: 'sym_r_architecture', color: 'var(--c-stone)', since: 1913 },
   { id: 'social', icon: 'sym_r_handshake', color: 'var(--c-teal)', since: 1917 },
   {
     id: 'science',

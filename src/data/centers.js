@@ -11,7 +11,7 @@ export const CATEGORIES = [
   { id: 'social', icon: 'sym_r_diversity_1', color: '#c99434' },
   { id: 'arts', icon: 'sym_r_palette', color: '#8a6bb8' },
   { id: 'research', icon: 'sym_r_science', color: '#3e8e9a' },
-  { id: 'history', icon: 'sym_r_history_edu', color: '#8c6f5a' },
+  { id: 'history', icon: 'sym_r_history_edu', color: '#6f86b5' },
 ]
 
 export const CENTERS = [

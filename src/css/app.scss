@@ -29,7 +29,9 @@
   --c-violet: #8a6bb8;
   --c-rose: #b5517a;
   --c-teal: #3e8e9a;
-  --c-earth: #8c6f5a;
+  --c-stone: #6f86b5; // cool stone blue (replaces the former earth brown)
+  --c-book: #b03f68; // raspberry rose for booking, chat and call actions (white text passes WCAG AA)
+  --c-book-soft: #b03f68;
 
   --shape-organic: 26px 10px 26px 10px;
   --shape-leaf: 30px 4px 30px 4px;
@@ -66,7 +68,11 @@ body.body--dark {
   --app-border: #343c6e;
   --app-header: rgba(19, 24, 51, 0.86);
   --veil-blend: screen;
-  --veil-opacity: 0.55;
+  --veil-opacity: 0.6;
+  // warm hues turn muddy on the night background, so dark mode uses cooler, clearer ones
+  --c-peach: #e891b4;
+  --c-gold: #f2cc5c;
+  --c-book-soft: #f4a9c4;
 }
 
 html {
@@ -262,4 +268,10 @@ body.body--dark .q-btn.text-primary {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+// booking actions are the one place the app raises its voice
+.q-btn.btn-book {
+  background: var(--c-book) !important;
+  color: #fff !important;
 }

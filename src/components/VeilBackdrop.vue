@@ -1,6 +1,16 @@
 <script setup>
+import { useQuasar } from 'quasar'
+
 // Lazure ("veil") painting: translucent washes of colour laid over one another,
 // as on the walls of Waldorf classrooms. Drawn once, softly, when the page opens.
+const $q = useQuasar()
+
+// on the night background warm washes look muddy, so dark mode swaps them for clearer hues
+const DARK_SWAP = {
+  '#e0b04a': '#5fa8c9', // gold → sky
+  '#e9a89b': '#d77fb0', // peach → orchid
+}
+
 const props = defineProps({
   colors: {
     type: Array,
@@ -20,7 +30,10 @@ const shapes = [
 ]
 
 const uid = `veil-${Math.random().toString(36).slice(2, 8)}`
-const colorAt = (i) => props.colors[(i + props.seed) % props.colors.length]
+const colorAt = (i) => {
+  const c = props.colors[(i + props.seed) % props.colors.length]
+  return $q.dark.isActive ? (DARK_SWAP[c.toLowerCase()] ?? c) : c
+}
 </script>
 
 <template>

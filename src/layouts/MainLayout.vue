@@ -27,6 +27,7 @@ const navGroups = [
   {
     id: 'live',
     items: [
+      { to: '/doctor', label: 'nav.doctor', icon: 'sym_r_event_available', accent: true },
       { to: '/health', label: 'nav.health', icon: 'sym_r_healing' },
       { to: '/map', label: 'nav.map', icon: 'sym_r_map' },
       { to: '/festivals', label: 'nav.festivals', icon: 'sym_r_calendar_month' },
@@ -39,10 +40,11 @@ const navGroups = [
   },
 ]
 
-// the five most used destinations live in the phone's bottom bar
+// the most used destinations live in the phone's bottom bar; booking sits in the middle
 const bottomItems = [
   { to: '/', label: 'nav.home', icon: 'sym_r_home' },
   { to: '/ideas', label: 'nav.ideasShort', icon: 'sym_r_emoji_objects' },
+  { to: '/doctor', label: 'nav.doctorShort', icon: 'sym_r_event_available', accent: true },
   { to: '/map', label: 'nav.map', icon: 'sym_r_map' },
   { to: '/health', label: 'nav.health', icon: 'sym_r_healing' },
 ]
@@ -73,6 +75,17 @@ const themeLabel = computed(() =>
         </router-link>
 
         <q-space />
+
+        <q-btn
+          v-if="!isMobile && route.path !== '/doctor'"
+          unelevated
+          no-caps
+          rounded
+          icon="sym_r_event_available"
+          :label="t('nav.doctor')"
+          to="/doctor"
+          class="btn-book header-book"
+        />
 
         <q-btn
           flat
@@ -151,6 +164,7 @@ const themeLabel = computed(() =>
                 :to="item.to"
                 exact
                 class="drawer-item"
+                :class="{ 'drawer-item--accent': item.accent }"
                 active-class="drawer-item--active"
                 @click="isMobile && (drawerOpen = false)"
               >
@@ -175,6 +189,7 @@ const themeLabel = computed(() =>
           :key="item.to"
           :to="item.to"
           class="bottom-link"
+          :class="{ 'bottom-link--accent': item.accent }"
           exact-active-class="is-active"
         >
           <q-icon :name="item.icon" size="24px" />
@@ -313,7 +328,7 @@ body.body--dark .drawer-item--active {
 
 .bottom-nav {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   height: 62px;
 }
 
@@ -360,6 +375,53 @@ body.body--dark .drawer-item--active {
     background: var(--app-surface-tint);
     z-index: -1;
   }
+}
+
+// the booking tab: a raised round button in the middle of the bar
+.bottom-link--accent {
+  color: var(--app-text);
+
+  .q-icon {
+    width: 46px;
+    height: 46px;
+    margin-top: -20px;
+    border-radius: 50%;
+    background: var(--c-book);
+    color: #fff;
+    box-shadow:
+      0 0 0 4px var(--app-page),
+      0 4px 12px rgba(176, 63, 104, 0.35);
+  }
+
+  &.is-active {
+    color: var(--c-book);
+  }
+
+  &.is-active::before {
+    display: none;
+  }
+}
+
+body.body--dark .bottom-link--accent.is-active {
+  color: var(--c-book-soft);
+}
+
+.header-book {
+  margin-right: 8px;
+  padding: 0 14px;
+}
+
+.drawer-item--accent {
+  border: 1px solid color-mix(in srgb, var(--c-book) 45%, transparent);
+  margin-bottom: 6px;
+
+  :deep(.q-icon) {
+    color: var(--c-book);
+  }
+}
+
+body.body--dark .drawer-item--accent :deep(.q-icon) {
+  color: var(--c-book-soft);
 }
 
 body.body--dark .bottom-link.is-active {

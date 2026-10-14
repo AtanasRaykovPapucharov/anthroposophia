@@ -21,7 +21,7 @@ const events = computed(() =>
         :title="t('history.title')"
         :lead="t('history.lead')"
         icon="sym_r_history_edu"
-        :colors="['#e0b04a', '#8c6f5a', '#e9a89b', '#3b4a8c']"
+        :colors="['#e0b04a', '#6f86b5', '#e9a89b', '#3b4a8c']"
         :seed="2"
       />
 
